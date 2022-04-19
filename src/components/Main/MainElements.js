@@ -12,4 +12,5 @@ export const MainContainer = styled.main`
   bottom: 0;
   margin-left: auto;
   margin-right: auto;
+  z-index: 20;
 `;

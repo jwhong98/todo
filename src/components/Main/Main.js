@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
+import List from "../List/List";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import { MainContainer } from "./MainElements";
 
@@ -9,6 +10,7 @@ const Main = () => {
       <Header />
       <MainContainer>
         <ThemeSwitcher />
+        <List />
       </MainContainer>
     </>
   );

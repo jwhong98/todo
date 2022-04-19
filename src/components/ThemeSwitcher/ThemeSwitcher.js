@@ -5,7 +5,7 @@ const ThemeSwitcher = () => {
   return (
     <ThemeSwitchContainer>
       <h1>TODO</h1>
-      <img src="" alt="switch" />
+      <ion-icon name="moon-sharp"></ion-icon>
     </ThemeSwitchContainer>
   );
 };
