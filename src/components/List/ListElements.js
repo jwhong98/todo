@@ -35,6 +35,7 @@ export const ListAction = styled.div`
   justify-content: space-between;
   padding: 1rem;
   color: hsl(236, 9%, 61%);
+  margin-bottom: 1rem;
 
   p {
     font-size: 0.75rem;
@@ -46,5 +47,26 @@ export const ListAction = styled.div`
     outline: none;
     border: none;
     font-size: 0.8rem;
+  }
+`;
+
+export const TodoTabs = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+
+  button {
+    background: none;
+    border: none;
+    color: hsl(236, 9%, 61%);
+    font-weight: 700;
+    &:focus:active {
+      color: hsl(235, 19%, 35%);
+    }
   }
 `;

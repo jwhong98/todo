@@ -1,23 +1,49 @@
 import React, { useState } from "react";
 import Todos from "../Todos/Todos";
-import { ListContainer, TodoList, ListAction } from "./ListElements";
+import { ListContainer, TodoList, ListAction, TodoTabs } from "./ListElements";
 
 const List = () => {
   const [todo, setTodo] = useState([
-    "Jog around the park 3x",
-    "10 minutes meditation",
-    "Read for 1 hour",
+    { id: 1, todo: "Jog around the park 3x", complete: false },
+    { id: 2, todo: "10 minutes meditation", complete: false },
+    { id: 3, todo: "Read for 1 hour", complete: false },
   ]);
+
+  const clearHandler = () => {
+    setTodo([]);
+  };
+
+  const removeHandler = (id) => {
+    setTodo(todo.filter((item) => item.id !== id));
+  };
+
+  const completeHandler = () => {
+    const filteredList = todo.filter((item) => item.complete);
+    setTodo(filteredList);
+  };
 
   const keyDownHandler = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      setTodo((prevArr) => [...prevArr, e.target.value]);
+      let newTodo = {
+        id: Math.random().toString(),
+        todo: e.target.value,
+        complete: false,
+      };
+      setTodo((prevArr) => [...prevArr, newTodo]);
       e.target.value = "";
     }
   };
   const createTodo = (data) => {
-    return <Todos todo={data} />;
+    return (
+      <Todos
+        key={data.id}
+        id={data.id}
+        todo={data.todo}
+        complete={data.complete}
+        removeHandler={removeHandler}
+      />
+    );
   };
   return (
     <>
@@ -34,9 +60,14 @@ const List = () => {
         {todo.map(createTodo)}
         <ListAction>
           <p>{todo.length} items left</p>
-          <button>Clear Completed</button>
+          <button onClick={clearHandler}>Clear Completed</button>
         </ListAction>
       </TodoList>
+      <TodoTabs>
+        <button>All</button>
+        <button>Active</button>
+        <button onClick={completeHandler}>Completed</button>
+      </TodoTabs>
     </>
   );
 };
