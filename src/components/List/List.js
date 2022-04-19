@@ -3,23 +3,36 @@ import Todos from "../Todos/Todos";
 import { ListContainer, TodoList, ListAction, TodoTabs } from "./ListElements";
 
 const List = () => {
-  const [todo, setTodo] = useState([
+  const [defaultList, setDefaultList] = useState([
     { id: 1, todo: "Jog around the park 3x", complete: false },
     { id: 2, todo: "10 minutes meditation", complete: false },
-    { id: 3, todo: "Read for 1 hour", complete: false },
+    { id: 3, todo: "Read for 1 hour", complete: true },
   ]);
 
+  const [todo, setTodo] = useState(defaultList);
+
   const clearHandler = () => {
-    setTodo([]);
+    const filteredList = todo.filter((item) => item.complete === false);
+    setTodo(filteredList);
+    setDefaultList(filteredList);
   };
 
   const removeHandler = (id) => {
-    setTodo(todo.filter((item) => item.id !== id));
+    const filteredList = todo.filter((item) => item.id !== id);
+    setTodo(filteredList);
+    setDefaultList(filteredList);
+  };
+
+  const allHandler = () => {
+    setTodo(defaultList);
+  };
+
+  const activeHandler = () => {
+    setTodo(defaultList.filter((item) => item.complete === false));
   };
 
   const completeHandler = () => {
-    const filteredList = todo.filter((item) => item.complete);
-    setTodo(filteredList);
+    setTodo(defaultList.filter((item) => item.complete));
   };
 
   const keyDownHandler = (e) => {
@@ -31,6 +44,7 @@ const List = () => {
         complete: false,
       };
       setTodo((prevArr) => [...prevArr, newTodo]);
+      setDefaultList((prevArr) => [...prevArr, newTodo]);
       e.target.value = "";
     }
   };
@@ -64,8 +78,8 @@ const List = () => {
         </ListAction>
       </TodoList>
       <TodoTabs>
-        <button>All</button>
-        <button>Active</button>
+        <button onClick={allHandler}>All</button>
+        <button onClick={activeHandler}>Active</button>
         <button onClick={completeHandler}>Completed</button>
       </TodoTabs>
     </>
