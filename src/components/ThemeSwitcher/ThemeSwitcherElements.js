@@ -17,5 +17,6 @@ export const ThemeSwitchContainer = styled.div`
   ion-icon {
     color: #fff;
     font-size: 1.25rem;
+    cursor: pointer;
   }
 `;

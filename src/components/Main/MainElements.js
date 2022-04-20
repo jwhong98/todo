@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const MainContainer = styled.main`
   /* temporary */
-  width: 100vw;
   height: 100vh;
   background: ${({ theme }) => theme.colors.background};
 `;

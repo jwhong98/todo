@@ -27,7 +27,7 @@ export const TodoList = styled.div`
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
   div:not(:last-child) {
-    border-bottom: 1px solid hsl(236, 33%, 92%);
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   }
 `;
 
@@ -37,7 +37,7 @@ export const ListAction = styled.div`
   justify-content: space-between;
   padding: 1rem;
   background: ${({ theme }) => theme.colors.listBackground};
-  color: hsl(236, 9%, 61%);
+  color: ${({ theme }) => theme.colors.action};
   margin-bottom: 1rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -62,14 +62,16 @@ export const TodoTabs = styled.div`
   justify-content: center;
   background: ${({ theme }) => theme.colors.listBackground};
   gap: 1rem;
-  padding: 1rem;
+
   border-radius: 5px;
 
   button {
     background: none;
+    padding: 1rem;
     border: none;
-    color: hsl(236, 9%, 61%);
+    color: ${({ theme }) => theme.colors.button};
     font-weight: 700;
+    cursor: pointer;
     :focus {
       color: hsl(220, 98%, 61%);
     }
