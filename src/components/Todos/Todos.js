@@ -4,10 +4,9 @@ import { TodosContainer } from "./TodosElements";
 const Todos = (props) => {
   const [complete, setComplete] = useState(props.complete);
 
-  const onClickHandler = (e) => {
+  const onClickHandler = () => {
     setComplete(!complete);
-    e.target.complete = complete;
-    console.log(e.target.complete);
+    props.updateHandler(props.id);
   };
 
   const remove = () => {
@@ -15,7 +14,13 @@ const Todos = (props) => {
   };
   return (
     <TodosContainer complete={complete}>
-      <input type="checkbox" name="" id="" onClick={onClickHandler} />
+      <input
+        type="checkbox"
+        name=""
+        id=""
+        onClick={onClickHandler}
+        checked={complete ? true : false}
+      />
       <p>{props.todo}</p>
       <ion-icon name="close-outline" onClick={remove}></ion-icon>
     </TodosContainer>

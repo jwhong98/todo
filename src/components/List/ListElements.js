@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ListContainer = styled.div`
   width: 100%;
-  background: #fff;
   border-radius: 5px;
 
   form {
@@ -12,6 +11,7 @@ export const ListContainer = styled.div`
 
     input {
       width: 100%;
+      background: ${({ theme }) => theme.colors.listBackground};
       outline: none;
       border: none;
       border-radius: inherit;
@@ -21,8 +21,10 @@ export const ListContainer = styled.div`
 `;
 
 export const TodoList = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme.colors.listBackground};
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
   div:not(:last-child) {
     border-bottom: 1px solid hsl(236, 33%, 92%);
@@ -34,8 +36,11 @@ export const ListAction = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  background: ${({ theme }) => theme.colors.listBackground};
   color: hsl(236, 9%, 61%);
   margin-bottom: 1rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 
   p {
     font-size: 0.75rem;
@@ -55,7 +60,7 @@ export const TodoTabs = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.listBackground};
   gap: 1rem;
   padding: 1rem;
   border-radius: 5px;
@@ -65,8 +70,8 @@ export const TodoTabs = styled.div`
     border: none;
     color: hsl(236, 9%, 61%);
     font-weight: 700;
-    &:focus:active {
-      color: hsl(235, 19%, 35%);
+    :focus {
+      color: hsl(220, 98%, 61%);
     }
   }
 `;

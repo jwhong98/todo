@@ -6,7 +6,7 @@ const List = () => {
   const [defaultList, setDefaultList] = useState([
     { id: 1, todo: "Jog around the park 3x", complete: false },
     { id: 2, todo: "10 minutes meditation", complete: false },
-    { id: 3, todo: "Read for 1 hour", complete: true },
+    { id: 3, todo: "Read for 1 hour", complete: false },
   ]);
 
   const [todo, setTodo] = useState(defaultList);
@@ -23,16 +23,21 @@ const List = () => {
     setDefaultList(filteredList);
   };
 
-  const allHandler = () => {
-    setTodo(defaultList);
+  const btnHandler = (e) => {
+    if (e.target.value === "all") {
+      setTodo(defaultList);
+    } else if (e.target.value === "active") {
+      setTodo(defaultList.filter((item) => item.complete === false));
+    } else if (e.target.value === "completed") {
+      setTodo(defaultList.filter((item) => item.complete));
+    }
   };
 
-  const activeHandler = () => {
-    setTodo(defaultList.filter((item) => item.complete === false));
-  };
-
-  const completeHandler = () => {
-    setTodo(defaultList.filter((item) => item.complete));
+  const updateStatus = (id) => {
+    let todoIndex = defaultList.findIndex((todo) => todo.id === id);
+    const item = defaultList[todoIndex];
+    item.complete = !item.complete;
+    defaultList[todoIndex] = item;
   };
 
   const keyDownHandler = (e) => {
@@ -56,6 +61,7 @@ const List = () => {
         todo={data.todo}
         complete={data.complete}
         removeHandler={removeHandler}
+        updateHandler={updateStatus}
       />
     );
   };
@@ -78,9 +84,15 @@ const List = () => {
         </ListAction>
       </TodoList>
       <TodoTabs>
-        <button onClick={allHandler}>All</button>
-        <button onClick={activeHandler}>Active</button>
-        <button onClick={completeHandler}>Completed</button>
+        <button onClick={btnHandler} value="all">
+          All
+        </button>
+        <button onClick={btnHandler} value="active">
+          Active
+        </button>
+        <button onClick={btnHandler} value="completed">
+          Completed
+        </button>
       </TodoTabs>
     </>
   );

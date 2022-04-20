@@ -6,7 +6,7 @@ export const TodosContainer = styled.div`
   align-items: center;
   padding: 1rem;
   gap: 0.75rem;
-  color: hsl(235, 19%, 35%);
+  color: ${({ theme }) => theme.colors.active};
 
   ion-icon {
     margin-left: auto;
