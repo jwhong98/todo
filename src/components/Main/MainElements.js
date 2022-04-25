@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.main`
-  /* temporary */
-  height: 100vh;
-  background: ${({ theme }) => theme.colors.background};
-`;
-
-export const MainWrapper = styled.div`
+export const MainContainer = styled.div`
   width: 100%;
   max-width: 700px;
   height: 100%;
