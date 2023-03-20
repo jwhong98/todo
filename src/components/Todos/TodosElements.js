@@ -10,6 +10,7 @@ export const TodosContainer = styled.div`
 
   ion-icon {
     margin-left: auto;
+    cursor: pointer;
   }
 
   ${({ complete }) =>

@@ -52,6 +52,7 @@ export const ListAction = styled.div`
     outline: none;
     border: none;
     font-size: 0.8rem;
+    cursor: pointer;
   }
 `;
 
